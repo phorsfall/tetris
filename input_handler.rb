@@ -7,7 +7,7 @@ class InputHandler
     @das_delay = 16
     @das_repeat = 6
     @soft_drop_counter = 0
-    @soft_drop_repeat = 6
+    @soft_drop_repeat = 2
   end
   
   def button_down(id)
