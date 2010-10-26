@@ -33,18 +33,6 @@ module Tetris
     def delete_row(index)
       @cells.delete_at(index)
     end
-    
-    def line_clear
-      count = 0
-      @cells.each_with_index do |row, index|
-        if row.uniq == [1]
-          delete_row(index)
-          insert_row
-          count += 1
-        end
-      end
-      count
-    end
 
     def complete_rows
       lines = []
@@ -53,7 +41,6 @@ module Tetris
       end
       lines
     end
-
 
     def clear_complete_rows
       complete_rows.each do |index|
