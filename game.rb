@@ -7,6 +7,7 @@ require "play_field"
 require "random_generator"
 require "next_piece"
 require "scoring"
+require "sound_manager"
 
 class Gosu::Color
   PURPLE = Gosu::Color.new(0xffff00ff)
@@ -20,6 +21,7 @@ class GameWindow < Gosu::Window
     @game_over = false
     @frame = 0
     @scoring = Tetris::Scoring.new(self)
+    @sound_manager = Tetris::SoundManager.new(self)
     @random_generator = Tetris::RandomGenerator.new
     @play_field = Tetris::PlayField.new(self, @scoring)
     @tetromino = Tetris::Tetromino.new(self, @play_field, @random_generator)
@@ -76,6 +78,7 @@ class GameWindow < Gosu::Window
 
   def game_over!
     @game_over = true
+    play_sample :fx2
   end
 
   def game_over?
@@ -85,7 +88,11 @@ class GameWindow < Gosu::Window
   def draw_square(x, y, c, size)
     draw_quad x, y, c, x+size, y, c, x+size, y+size, c, x, y+size, c
   end
-  
+
+  def play_sample(name)
+    @sound_manager.play(name)
+  end
+
   def button_down(id)
     @input_handler.button_down(id) unless @play_field.clearing_lines?
     close if id == Gosu::Button::KbEscape

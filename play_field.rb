@@ -58,6 +58,7 @@ module Tetris
       @clearing_lines ||= !complete_rows.empty?
 
       if clearing_lines?
+        @window.play_sample(:fx1) if @line_clear_counter.zero?
         if @line_clear_counter < LineClearDelay
           @line_clear_counter += 1
         else
@@ -65,6 +66,7 @@ module Tetris
           @scoring.line_clear(rows_cleared)
           @line_clear_counter = 0
           @clearing_lines = false
+          @window.play_sample :explosion2
         end
       end
     end

@@ -55,6 +55,7 @@ module Tetris
         col, row = @x + bx, @y + by
         @play_field.cells[row][col] = 1
       end
+      @window.play_sample :explosion1
     end
     
     def spawn
