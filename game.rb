@@ -17,6 +17,7 @@ class GameWindow < Gosu::Window
   def initialize
     super(800, 640, false)
     self.caption = "Tetris"
+    @game_over = false
     @frame = 0
     @scoring = Tetris::Scoring.new(self)
     @random_generator = Tetris::RandomGenerator.new
@@ -28,6 +29,7 @@ class GameWindow < Gosu::Window
   end
   
   def update
+    return if game_over?
     @frame += 1
     @play_field.update
 
@@ -46,6 +48,7 @@ class GameWindow < Gosu::Window
     @font.draw "Score: #{@scoring.score}", 400, 180, 0
     @font.draw "Level: #{@scoring.level}", 400, 220, 0
     @font.draw "Lines: #{@scoring.lines_cleared}", 400, 260, 0
+    @font.draw "Game Over", 200, 200, 0, 4, 4 if game_over?
   end
 
   def gravity
@@ -69,6 +72,14 @@ class GameWindow < Gosu::Window
     else
       1
     end
+  end
+
+  def game_over!
+    @game_over = true
+  end
+
+  def game_over?
+    @game_over
   end
 
   def draw_square(x, y, c, size)

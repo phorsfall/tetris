@@ -61,6 +61,7 @@ module Tetris
       @shape = @random_generator.next_shape
       @x = 3
       @y = @rotation = 0
+      @window.game_over! unless fits_play_field?
     end
     
     def fits_play_field?
