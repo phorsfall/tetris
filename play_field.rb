@@ -6,8 +6,9 @@ module Tetris
     CellSize = 32
     LineClearDelay = 60
     
-    def initialize(window)
+    def initialize(window, scoring)
       @window = window
+      @scoring = scoring
       initialize_cells
       @clearing_lines = false
       @line_clear_counter = 0
@@ -60,7 +61,8 @@ module Tetris
         if @line_clear_counter < LineClearDelay
           @line_clear_counter += 1
         else
-          clear_complete_rows
+          rows_cleared = clear_complete_rows
+          @scoring.line_clear(rows_cleared)
           @line_clear_counter = 0
           @clearing_lines = false
         end
