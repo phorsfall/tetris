@@ -4,7 +4,7 @@ module Tetris
 
     Rows, Columns = 22, 10
     CellSize = 28
-    LineClearDelay = 60
+    LineClearDelay = 20
     
     def initialize(window, scoring)
       @window = window
