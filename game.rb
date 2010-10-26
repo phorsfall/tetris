@@ -27,12 +27,14 @@ class GameWindow < Gosu::Window
   
   def update
     @frame += 1
-    @play_field.clear_lines
-    
-    # Movement is jerky if a move under gravity happens while soft dropping.
-    # Not sure if gravity is supposed to be applied while soft dropping.
-    @tetromino.move_down if @frame % 48 == 0
-    @input_handler.update
+    @play_field.update
+
+    unless @play_field.clearing_lines?
+      # Movement is jerky if a move under gravity happens while soft dropping.
+      # Not sure if gravity is supposed to be applied while soft dropping.
+      @tetromino.move_down if @frame % 48 == 0
+      @input_handler.update
+    end
   end
 
   def draw
