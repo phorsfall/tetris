@@ -2,8 +2,8 @@ module Tetris
   class PlayField
     attr_reader :cells
 
-    Rows, Columns = 20, 10
-    CellSize = 32
+    Rows, Columns = 22, 10
+    CellSize = 28
     LineClearDelay = 60
     
     def initialize(window, scoring)
@@ -71,6 +71,7 @@ module Tetris
 
     def draw
       each_cell do |row, col, state|
+        next if row < 2
         x, y = col * CellSize, row * CellSize
         # TODO: Clean up the selection of block colour.
         if complete_rows.include?(row)
