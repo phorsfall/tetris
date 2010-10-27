@@ -4,6 +4,8 @@ This is a simple Tetris game written in Ruby using the [Gosu framework](http://c
 
 The intention is that it's a reasonably faithful reproduction of early versions of the game in terms of game play, probably most similar to the NES version.
 
+![Screenshot](http://github.com/phorsfall/tetris/raw/master/assets/screens/screen1.png)
+
 # Usage
 
     gem install gosu
