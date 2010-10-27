@@ -11,7 +11,7 @@ module Tetris
     end
 
     def load_sample(name, filename)
-      @samples[name] = Gosu::Sample.new(@window, "sfx/#{filename}")
+      @samples[name] = Gosu::Sample.new(@window, "assets/sfx/#{filename}")
     end
 
     def load_samples
