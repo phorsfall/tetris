@@ -3,7 +3,7 @@ module Tetris
     attr_reader :cells
 
     Rows, Columns = 22, 10
-    CellSize = 28
+    CellSize = 24
     LineClearDelay = 20
     
     def initialize(window, scoring)

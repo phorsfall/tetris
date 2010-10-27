@@ -13,7 +13,7 @@ module Tetris
     
     def draw
       @shape = @random_generator.peek
-      draw_at(400, 50)
+      draw_at(0, 0)
     end
   end
 end

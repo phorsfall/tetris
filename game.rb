@@ -16,7 +16,7 @@ end
 
 class GameWindow < Gosu::Window
   def initialize
-    super(800, 640, false)
+    super(240, 680, false)
     self.caption = "Tetris"
     @game_over = false
     @frame = 0
@@ -27,7 +27,7 @@ class GameWindow < Gosu::Window
     @tetromino = Tetris::Tetromino.new(self, @play_field, @random_generator)
     @next_piece = Tetris::NextPiece.new(self, @random_generator)
     @input_handler = InputHandler.new(self, @tetromino)
-    @font = Gosu::Font.new(self, "Cracked", 40)
+    @font = Gosu::Font.new(self, "assets/fonts/ARCADECLASSIC.TTF", 30)
   end
   
   def update
@@ -44,13 +44,16 @@ class GameWindow < Gosu::Window
   end
 
   def draw
-    @play_field.draw
-    @tetromino.draw
-    @next_piece.draw
-    @font.draw "Score: #{@scoring.score}", 400, 180, 0
-    @font.draw "Level: #{@scoring.level}", 400, 220, 0
-    @font.draw "Lines: #{@scoring.lines_cleared}", 400, 260, 0
-    @font.draw "Game Over", 200, 200, 0, 4, 4 if game_over?
+    translate 0, 90 do
+      @play_field.draw
+      @tetromino.draw
+    end
+    translate 72, 10 do
+      @next_piece.draw
+    end
+    @font.draw "Score    %07i" % @scoring.score, 30, 620, 0
+    @font.draw "Level    %02i" % @scoring.level, 30, 640, 0
+    @font.draw "Game Over", 10, 200, 0, 2, 2, Gosu::Color::BLACK if game_over?
   end
 
   def gravity
