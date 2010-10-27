@@ -1,8 +1,6 @@
 # Tetris
 
-This is a simple Tetris game written in Ruby using the [Gosu framework](http://code.google.com/p/gosu/).
-
-The intention is that it's a reasonably faithful reproduction of early versions of the game in terms of game play, probably most similar to the NES version.
+This is a Tetris clone written in Ruby using the [Gosu framework](http://code.google.com/p/gosu/).
 
 ![Screenshot](http://github.com/phorsfall/tetris/raw/master/assets/screens/screen1.png)
 
@@ -25,6 +23,8 @@ The intention is that it's a reasonably faithful reproduction of early versions 
 * DAS reset when pieces are locked
 
 # Resources
+
+I've taken care to implement the mechanics of the game reasonably faithfully thus far. Game play most closely resembles early versions of the game, with some specifics taken from the NES version. For more information, see the Tetris wiki:
 
 * [Hard Drop - Tetris Wiki](http://harddrop.com/wiki/index.php?title=Main_Page)
 
