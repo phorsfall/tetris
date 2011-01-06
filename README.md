@@ -2,7 +2,7 @@
 
 This is a Tetris clone written in Ruby using the [Gosu framework](http://code.google.com/p/gosu/).
 
-![Screenshot](http://github.com/phorsfall/tetris/raw/master/assets/screens/screen1.png)
+![Screenshot](https://github.com/phorsfall/tetris/raw/master/assets/screens/screen1.png)
 
 # Usage
 
