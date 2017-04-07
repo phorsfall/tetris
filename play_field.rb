@@ -5,7 +5,7 @@ module Tetris
     Rows, Columns = 22, 10
     CellSize = 24
     LineClearDelay = 20
-    
+
     def initialize(window, scoring)
       @window = window
       @scoring = scoring
@@ -13,12 +13,12 @@ module Tetris
       @clearing_lines = false
       @line_clear_counter = 0
     end
-    
+
     def initialize_cells
-      @cells = []      
+      @cells = []
       Rows.times { insert_row }
     end
-    
+
     def each_cell
       Columns.times do |col|
         Rows.times do |row|
@@ -26,11 +26,11 @@ module Tetris
         end
       end
     end
-    
+
     def insert_row
       @cells.insert 0, [nil] * Columns
     end
-    
+
     def delete_row(index)
       @cells.delete_at(index)
     end

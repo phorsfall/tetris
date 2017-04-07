@@ -1,35 +1,31 @@
 $: << "."
-require "rubygems"
-require "gosu"
-require "input_handler"
-require "tetromino"
-require "play_field"
-require "random_generator"
-require "next_piece"
-require "scoring"
-require "sound_manager"
 
-class Gosu::Color
-  PURPLE = Gosu::Color.new(0xffff00ff)
-  ORANGE = Gosu::Color.new(0xffff9900)
-end
+require 'gosu'
+require 'input_handler'
+require 'tetromino'
+require 'play_field'
+require 'random_generator'
+require 'next_piece'
+require 'scoring'
+require 'sound_manager'
+require 'pry'
 
 class GameWindow < Gosu::Window
   def initialize
-    super(240, 680, false)
-    self.caption = "Tetris"
-    @game_over = false
-    @frame = 0
-    @scoring = Tetris::Scoring.new(self)
-    @sound_manager = Tetris::SoundManager.new(self)
+    super(240, 680)
+    caption           = 'Tetris'
+    @game_over        = false
+    @frame            = 0
+    @scoring          = Tetris::Scoring.new(self)
+    @sound_manager    = Tetris::SoundManager.new(self)
     @random_generator = Tetris::RandomGenerator.new
-    @play_field = Tetris::PlayField.new(self, @scoring)
-    @tetromino = Tetris::Tetromino.new(self, @play_field, @random_generator)
-    @next_piece = Tetris::NextPiece.new(self, @random_generator)
-    @input_handler = InputHandler.new(self, @tetromino)
-    @font = Gosu::Font.new(self, "assets/fonts/ARCADECLASSIC.TTF", 30)
+    @play_field       = Tetris::PlayField.new(self, @scoring)
+    @tetromino        = Tetris::Tetromino.new(self, @play_field, @random_generator)
+    @next_piece       = Tetris::NextPiece.new(self, @random_generator)
+    @input_handler    = InputHandler.new(self, @tetromino)
+    @font             = Gosu::Font.new(self, 'assets/fonts/ARCADECLASSIC.TTF', 30)
   end
-  
+
   def update
     return if game_over?
     @frame += 1
@@ -51,9 +47,9 @@ class GameWindow < Gosu::Window
     translate 72, 10 do
       @next_piece.draw
     end
-    @font.draw "Score    %07i" % @scoring.score, 30, 620, 0
-    @font.draw "Level    %02i" % @scoring.level, 30, 640, 0
-    @font.draw "Game Over", 10, 200, 0, 2, 2, Gosu::Color::BLACK if game_over?
+    @font.draw 'Score    %07i' % @scoring.score, 30, 620, 0
+    @font.draw 'Level    %02i' % @scoring.level, 30, 640, 0
+    @font.draw 'Game Over', 10, 200, 0, 2, 2, Gosu::Color::BLACK if game_over?
   end
 
   def gravity
